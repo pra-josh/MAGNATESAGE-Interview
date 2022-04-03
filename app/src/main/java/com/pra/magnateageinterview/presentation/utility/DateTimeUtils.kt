@@ -70,8 +70,8 @@ object DateTimeUtils {
             }
 
             if (currentTime.before(startTime)) {
-                Toast.makeText(context," Time is Lesser ",Toast.LENGTH_SHORT).show()
-                System.out.println(" Time is Lesser ");
+           //     Toast.makeText(context," Time is Lesser ",Toast.LENGTH_SHORT).show()
+           //     System.out.println(" Time is Lesser ");
                 valid = false;
             } else {
                 if (currentTime.after(endTime)) {

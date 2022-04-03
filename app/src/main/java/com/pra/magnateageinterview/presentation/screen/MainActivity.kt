@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
         mSelectObject = mViewModel.getSelectedObject()
 
         if (mSelectObject != null) {
+            Toast.makeText(this, "Selected menu=>" + mSelectObject?.name, Toast.LENGTH_SHORT).show()
             println("Model =================>" + mSelectObject)
             mImageList = mViewModel.getMenuList(mSelectObject!!)
 
