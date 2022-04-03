@@ -3,6 +3,7 @@ package com.pra.magnateageinterview.presentation.screen
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -19,7 +20,7 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
     private lateinit var mViewModel: MainActivityViewModel
     private lateinit var mBinding: ActivityMainBinding
     private var mImageList: MutableList<String> = ArrayList()
-    private lateinit var mSelectObject: Data
+    private var mSelectObject: Data? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,28 +46,31 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
             }
         })
 
-        mSelectObject = mViewModel.getSelectedObject()!!
+        mSelectObject = mViewModel.getSelectedObject()
 
         if (mSelectObject != null) {
             println("Model =================>" + mSelectObject)
-            mImageList = mViewModel.getMenuList(mSelectObject)
+            mImageList = mViewModel.getMenuList(mSelectObject!!)
+
+            mBinding.viewPager.startAutoScroll()
+            mBinding.viewPager.interval = mSelectObject?.timeInterval?.toLong()!! * 1000
+            mBinding.viewPager.isCycle = true
+            mAdapter = CustomPagerAdapter(this, mImageList, this)
+            mBinding.viewPager.adapter = mAdapter
+            mBinding.indicator.setViewPager(mBinding.viewPager)
+
         } else {
+            mBinding.flViewPager.visibility = View.GONE
+            mBinding.tvError.visibility = View.VISIBLE
+            mBinding.tvError.text = "Selected time or Date is not Proper"
             Toast.makeText(this, "Selected time or Date is not Proper", Toast.LENGTH_SHORT).show()
         }
-
-        mBinding.viewPager.startAutoScroll()
-        mBinding.viewPager.interval = mSelectObject.timeInterval.toLong() * 1000
-        mBinding.viewPager.isCycle = true
-        mAdapter = CustomPagerAdapter(this, mImageList, this)
-        mBinding.viewPager.adapter = mAdapter
-        mBinding.indicator.setViewPager(mBinding.viewPager)
-
     }
 
     fun setActionListeners() {
     }
 
     override fun onItemClick(position: Int) {
-     //   Toast.makeText(this, "Click", Toast.LENGTH_SHORT).show()
+        //   Toast.makeText(this, "Click", Toast.LENGTH_SHORT).show()
     }
 }
