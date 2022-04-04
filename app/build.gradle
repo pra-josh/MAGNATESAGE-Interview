@@ -58,6 +58,11 @@ dependencies {
     // viewpagerIndicator
     implementation 'me.relex:circleindicator:2.1.6'
 
+    // Kotlin Coroutine
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-native-mt"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0-native-mt"
+
+
 
     // glide
     implementation "com.github.bumptech.glide:glide:$glide_version"

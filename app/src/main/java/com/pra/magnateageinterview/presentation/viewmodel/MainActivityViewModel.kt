@@ -32,7 +32,6 @@ class MainActivityViewModel(private val context: Context) : ViewModel() {
         menuResponse = Gson().fromJson(data, MenuResponseModel::class.java)
         println("Date=====>  " + menuResponse?.data?.size)
 
-        getCurrentDateTime()
 
     }
 
@@ -53,6 +52,8 @@ class MainActivityViewModel(private val context: Context) : ViewModel() {
 
 
     fun getSelectedObject(): Data? {
+        getCurrentDateTime()
+
         var mModel: Data? = null
         if (menuResponse?.data != null) {
             for (i in menuResponse?.data?.indices!!) {
@@ -75,12 +76,12 @@ class MainActivityViewModel(private val context: Context) : ViewModel() {
                         menuResponse?.data!![i].startDate, endDate, currentDate
                     )
                     if (validDate) {
-                        Toast.makeText(
+                       /* Toast.makeText(
                             context,
                             "Data Got successfully in between Date-time",
                             Toast.LENGTH_SHORT
                         )
-                            .show()
+                            .show()*/
                         mModel = menuResponse?.data!![i]
                         break
                     }
@@ -88,7 +89,7 @@ class MainActivityViewModel(private val context: Context) : ViewModel() {
             }
 
         }
-        mSelectedObject.value = mModel
+        mSelectedObject.postValue(mModel)
         return mModel
     }
 

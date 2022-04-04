@@ -13,9 +13,15 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
+import com.pra.magnateageinterview.R
 import com.pra.magnateageinterview.databinding.RowViewImageBinding
 import com.pra.magnateageinterview.presentation.listener.OnItemClickListener
 import com.pra.magnateageinterview.presentation.utility.Utility
+import android.graphics.Bitmap
+
+import com.bumptech.glide.request.target.BitmapImageViewTarget
+import java.security.AccessController.getContext
+
 
 public class CustomPagerAdapter(
     val context: Context, var listMenu: List<String>,
@@ -47,8 +53,10 @@ public class CustomPagerAdapter(
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val mBinding = RowViewImageBinding.inflate(mLayoutInflater!!, container, false)
+
         Glide.with(context)
             .load(listMenu[position])
+            .placeholder(R.drawable.ic_placeholder_image)
             .listener(object : RequestListener<Drawable> {
                 override fun onResourceReady(
                     resource: Drawable?,
@@ -73,12 +81,14 @@ public class CustomPagerAdapter(
             })
             .into(mBinding.imageView)
 
-
-
-        Glide.with(context)
+/*      Glide.with(context)
             .load(listMenu[position])
-            .centerCrop()
+
             .into(mBinding.imageView);
+*/
+
+
+
 
         container.addView(mBinding.root)
         mBinding.llParent.setOnClickListener {

@@ -6,7 +6,7 @@
       "start_date": "2022-04-01",
       "end_date": "",
       "start_time": "05:00:00",
-      "end_time": "10:59:00",
+      "end_time": "10:59:59",
       "time_interval": 10,
       "data": [
         "https://i.pinimg.com/564x/52/1e/4d/521e4d4ad17d24d802e6caf242b5cb3d.jpg",
@@ -19,7 +19,7 @@
       "start_date": "2022-04-01",
       "end_date": "",
       "start_time": "11:00:00",
-      "end_time": "16:59:00",
+      "end_time": "16:59:59",
       "time_interval": 10,
       "data": [
         "https://www.kindpng.com/picc/m/397-3973792_lunch-la-carte-lunch-menu-hd-png-download.png",
@@ -32,7 +32,7 @@
       "start_date": "2022-04-01",
       "end_date": "2022-05-01",
       "start_time": "17:00:00",
-      "end_time": "04:59:00",
+      "end_time": "04:59:59",
       "time_interval": 10,
       "data": [
         "https://b.zmtcdn.com/data/menus/913/113913/f9d278088a841585aa2818e7fbc4da8b.jpg"
